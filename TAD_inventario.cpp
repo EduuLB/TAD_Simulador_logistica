@@ -5,9 +5,9 @@ using namespace std;
 
 
 No* _criarNo(float peso, string carga_nome) {
-    No* no = (No*)calloc(1, sizeof(No));
+    No* no = new No;
     no->peso = peso;
-    string nome = carga_nome;
+    no->nome = carga_nome;
     no->proximo = NULL;
     return no;
 }
@@ -18,8 +18,8 @@ cargas* criarInventario(){
     return inv;
 }
 
-void adicionaCarga(cargas *inv,float peso,string garga_nome){
-    No * no= _criarNo(peso,garga_nome);
+void adicionaCarga(cargas *inv,float peso,string carga_nome){
+    No * no= _criarNo(peso,carga_nome);
  
         no->proximo=inv->inicio;
 
@@ -41,7 +41,7 @@ void removerCarga(cargas *inv, string nome) {
             }
 
             cout << "\nCarga excluida: " << atual->nome;
-            free(atual); 
+           delete atual; 
             return;
         }
         anterior = atual;

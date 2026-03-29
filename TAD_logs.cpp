@@ -1,43 +1,45 @@
+#include <iostream>
+#include <stdlib.h>
+#include <string>
 
-    #include <iostream>
-    #include <stdlib.h>
-    #include <string>
-    #include "TAD_logs.h"
+using namespace std;
 
-    using namespace std;
-    
-
-/*ypedef struct No{
-    No *prox;
+typedef struct No {
     string log;
-}No;*/
+    struct No* anterior;
+} No;
 
+typedef struct pilha {
+    No* topo;
+} pilha;
 
-pilha* criarpilhaLog(){
-    pilha *p= (pilha*)malloc(sizeof(pilha));
-    p=NULL;
+pilha* criarpilhaLog() {
+    pilha *p = new pilha;
+    if (p != NULL) {
+        p->topo = NULL; 
+    }
     return p;
-
 }
-void pushLog(pilha *p,string l){
-        pilha *novo=(pilha*)malloc(sizeof(pilha));
-        novo->log=l;
-        novo->anterior=p;
-        p=novo;
-        cout<<"log empilhado"<<novo->log;
 
+void pushLog(pilha *p, string l) {
+    if (p == NULL) return;
+
+    No* novo = new No;
+    if (novo != NULL) {
+        novo->log = l;
+        novo->anterior = p->topo; // O novo aponta para o antigo topo
+        p->topo = novo;           // O topo da pilha agora é o novo nó
+        cout << "Log empilhado: " << l << "\n";
     }
+}
 
-void popLog(pilha *p){
-
-
-        if(p==NULL){cout<<"pilha vazia\n";}
-        else{
-        pilha *aux=p;
-        p=p->anterior;
-        cout<<"\nvalor do log desempilhado: \n"<<aux->log;
-        free(aux);
-        }
-
-
+void popLog(pilha *p) {
+    if (p == NULL || p->topo == NULL) {
+        cout << "Pilha vazia\n";
+    } else {
+        No* aux = p->topo;
+        p->topo = p->topo->anterior;
+        cout << "Valor desempilhado: " << aux->log << "\n";
+        delete aux; 
     }
+}

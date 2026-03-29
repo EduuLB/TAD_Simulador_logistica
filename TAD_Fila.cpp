@@ -5,14 +5,14 @@
     using namespace std;
 
 fila* criarFila(){
-    fila *f=(fila*)malloc(sizeof(fila));
+    fila *f=new fila;
     f->fim=NULL;
     f->inicio=NULL;
     return f;
 
 }
 void enqueue(fila *f, int ID){
-    No *no=(No*)malloc(sizeof(No));
+    No *no=new No;
     no->id=ID;
     no->prox=NULL;
     if(f->inicio==NULL){
@@ -37,8 +37,8 @@ void dequeue(fila *f){
         
         no=f->inicio;
         f->inicio=f->inicio->prox;
-        cout<<"\n o aviao de id %d esta saindo\n",no->id;
-        delete(no);
+        cout<<"\n o aviao de id esta saindo\n",no->id;
+        delete no;
        if (f->inicio == NULL) {
             f->fim = NULL;
         }
