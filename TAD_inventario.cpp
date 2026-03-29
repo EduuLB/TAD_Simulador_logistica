@@ -13,7 +13,7 @@ No* _criarNo(float peso, string carga_nome) {
 }
 
 cargas* criarInventario(){
-    cargas *inv = (cargas*)calloc(1,sizeof(cargas));
+    cargas *inv = new cargas;
     inv->inicio=NULL;
     return inv;
 }

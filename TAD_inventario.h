@@ -6,6 +6,7 @@
 
 typedef struct No{
 
+    string nome;
     float peso;
     int id;
     No *proximo;
@@ -25,6 +26,7 @@ cargas* criarInventario(){
 }
 
 void adicionaCarga(){}
+void buscarCarga(cargas inv,string nome){}
 
 
 #endif
