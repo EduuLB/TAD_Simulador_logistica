@@ -4,19 +4,19 @@
     #ifndef FILA_H
     #define FILA_H
 
-    typedef struct No{
-        No *prox;
+    struct NoFila{
+        NoFila *prox;
         int id;
-    }No;
+    };
 
-    typedef struct fila_hangar{
-        No *inicio;
-        No *fim;
-    }fila;
+    struct Fila {
+        NoFila *inicio;
+        NoFila *fim;
+    };
 
-    fila* criarFila(){}
-    void enqueue(int id,fila *f){}
-    void dequeue(){}
+    Fila* criarFila();
+    void enqueue(Fila *f, int id);
+    void dequeue(Fila *f);
 
 
     #endif

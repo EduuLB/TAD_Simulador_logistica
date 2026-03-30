@@ -14,7 +14,7 @@ Pilha* criarPilhaLog() {
 void pushLog(Pilha *p, string l) {
     if (p == NULL) return;
 
-    No* novo = new No;
+    NoPilha* novo = new NoPilha;
     novo->log = l;
     novo->anterior = p->topo;
 
@@ -29,7 +29,7 @@ void popLog(Pilha *p) {
         return;
     }
 
-    No* aux = p->topo;
+    NoPilha* aux = p->topo;
     p->topo = aux->anterior;
 
     cout << "Valor desempilhado: " << aux->log << "\n";

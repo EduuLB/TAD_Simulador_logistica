@@ -3,14 +3,14 @@
 using namespace std;
 
 
-typedef struct No {
+typedef struct NoPilha {
     string log;
-    No* anterior;
-} No;
+    NoPilha* anterior;
+} NoPilha;
 
-typedef struct pilha_log{
+typedef struct pilha{
 
-    No* topo;
+    NoPilha* topo;
 
 } Pilha;
 

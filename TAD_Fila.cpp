@@ -1,50 +1,44 @@
     #include <iostream>
-    #include <stdlib.h>
-    #include <string>
     #include "TAD_fila.h"
     using namespace std;
 
-fila* criarFila(){
-    fila *f=new fila;
-    f->fim=NULL;
-    f->inicio=NULL;
-    return f;
+    Fila* criarFila(){
+        Fila *f= new Fila;
+        f->fim=NULL;
+        f->inicio=NULL;
+        return f;
 
-}
-void enqueue(fila *f, int ID){
-    No *no=new No;
-    no->id=ID;
-    no->prox=NULL;
-    if(f->inicio==NULL){
-        f->inicio=no;
-    }else{
-        f->fim->prox=no;
     }
-    f->fim=no;
-    cout<<"\n aviao de id: "<<ID<<" esta na fila\n";
 
-}
+    void enqueue(Fila *f, int id){
+        NoFila *no= new NoFila;
+        no->id = id;
+        no->prox=NULL;
 
-void dequeue(fila *f){
-    No *no ;
-
-
-    if(f->inicio==NULL){
-        string erro= "a hangar esta vazio";
-        cout<<erro;
-    }
-    else{
-        
-        no=f->inicio;
-        f->inicio=f->inicio->prox;
-        cout<<"\n o aviao de id esta saindo\n",no->id;
-        delete no;
-       if (f->inicio == NULL) {
-            f->fim = NULL;
+        if (f->inicio == NULL) {
+            f->inicio = no;
+            f->fim = no;
+        } else {
+            f->fim->prox = no;
+            f->fim = no;
         }
 
+        cout<<"\n aviao de id: "<< id <<" esta na fila\n";
 
     }
 
+    void dequeue(Fila *f){
+        if(f->inicio == NULL){
+            cout << "O hangar esta vazio";
+            return;
+        }
+            NoFila *noFila = f->inicio;
+            f->inicio = f->inicio->prox;
 
-}
+            cout << "\n o aviao de id " << noFila->id << " esta saindo\n";
+            delete noFila;
+            
+            if (f->inicio == NULL) {
+                f->fim = NULL;
+            }
+    }
