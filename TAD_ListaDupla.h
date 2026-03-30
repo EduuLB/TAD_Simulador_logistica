@@ -1,36 +1,22 @@
 #ifndef TAD_LISTADUPLA_H
 #define TAD_LISTADUPLA_H
 
-typedef struct No{
+#include <string>
+using namespace std;
+
+typedef struct NoDuplo{
     string nome;
-    No* proximo;
-    No* anterior;
-}No;
+    NoDuplo* proximo;
+    NoDuplo* anterior;
+} NoDuplo;
 
-typedef struct naves{
-    No* tail;
-    No* head;
-}nave;
+typedef struct Nave{
+    NoDuplo* head;
+    NoDuplo* tail;
+} Nave;
 
-
-
-nave* criarNave(){
-    nave *n = new nave;
-    n->tail=NULL;
-    n->head=NULL;
-}
-
-void InserirNave(string Nome,naven *n){
-    No* no = new No;
-    no->nome=Nome;
-    if(n->head==NULL){
-
-    }
-
-
-}
-
-
-
+Nave* criarNave();
+void inserirNave(string nome, Nave *n);
+void removerNave(Nave *n, string nome);
 
 #endif

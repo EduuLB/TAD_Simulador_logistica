@@ -1,21 +1,61 @@
 #include <iostream>
-#include "ListaSimples.h"
+#include "TAD_ListaSimples.h"
 using namespace std;
 
-Lista criarLista(){
-    Lista *lista = (ListaSimples*)calloc(1, sizeof(ListaSimples));
-    lista->inicio = NULL;
-    return lista;
+ListaSimples* criarListaSimples(){
+    ListaSimples *listaSimples = new ListaSimples;
+    listaSimples->inicio = NULL;
+    listaSimples->final = NULL;
+    return listaSimples;
 }
 
-No criarNo(Lista lista, int valor){
-    No *no = (No*)calloc(1, sizeof(No));
-    No *no = new No;
-    no->valor = valor;
-    no->proximo = NULL;
+NoSimples* criarNoSimples(int valor){
+    NoSimples *noSimples = new NoSimples;
+    noSimples->valor = valor;
+    noSimples->proximo = NULL;
+    return noSimples;
 }
 
-void inserirCarga(Lista lista, int valor);
+void inserirCarga(ListaSimples *listaSimples, int valor){
+    NoSimples *noSimples = criarNoSimples(valor);
 
-void removerCarga(Lista lista, int valor);
+    noSimples->proximo = listaSimples->inicio;
+    listaSimples->inicio = noSimples;
 
+    if(listaSimples->inicio == NULL){
+        listaSimples->final = noSimples;
+    }
+}
+
+void removerCarga(ListaSimples *listaSimples, int valor){
+
+    NoSimples *noSimples = listaSimples->inicio;
+    NoSimples *noAnterior = NULL;
+
+    while (noSimples != NULL){
+        if(noSimples->valor == valor){
+
+            if(noAnterior == NULL){
+                listaSimples->inicio = noSimples->proximo;
+            } else {
+                noAnterior->proximo = noSimples->proximo;
+            }
+            if(noSimples == listaSimples->final) {
+                listaSimples->final = noAnterior;
+            }
+            delete noSimples;
+            return;
+        }
+        noAnterior = noSimples;
+        noSimples = noSimples->proximo;
+    }
+}
+
+void exibirCarga(ListaSimples *listaSimples) {
+    NoSimples *noSimples = listaSimples->inicio;
+
+    while (noSimples != NULL){
+        cout << noSimples->valor << " - ";
+        noSimples = noSimples->proximo;
+    }
+}

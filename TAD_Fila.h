@@ -1,8 +1,8 @@
     #include <iostream>
     #include <stdlib.h>
     #include <string>
-    #ifndef FILA_H
-    #define FILA_H
+    #ifndef TAD_FILA_H
+    #define TAD_FILA_H
 
     struct NoFila{
         NoFila *prox;

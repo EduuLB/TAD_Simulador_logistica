@@ -18,4 +18,4 @@ Pilha* criarPilhaLog();
 void pushLog(Pilha *p, string l);
 void popLog(Pilha *p);
 
-#endif
+#endif 
