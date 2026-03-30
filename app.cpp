@@ -5,6 +5,7 @@
 #include "TAD_ListaCircular.h"
 #include "TAD_pilha.h"
 #include "TAD_fila.h"
+#include "raylib.h"
 using namespace std;
 
 //Main ListaEstatica
@@ -303,3 +304,18 @@ int main(){
     return 0;
 }
 */
+
+int main() {
+  const int screenWidth = 800;
+  const int screenHeight = 600;
+  InitWindow(screenWidth, screenHeight, "raylib basic window");
+  SetTargetFPS(60);
+  while (!WindowShouldClose()) {
+    BeginDrawing();
+    ClearBackground(RAYWHITE);
+    DrawText("It works!", 20, 20, 20, BLACK);
+    EndDrawing();
+  }
+  CloseWindow();
+  return 0;
+}
