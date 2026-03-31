@@ -14,8 +14,17 @@ int main(){
     const int largura = 800;
     const int altura = 600;
     InitWindow(largura,altura,"teste");
+    Tela tela_atual = MENU;
+    
 
     while(!WindowShouldClose()){
+        DrawText()
+        
+
+
+
+
+
 
     }
 
