@@ -8,6 +8,7 @@ using namespace std;
 Pilha* criarPilhaLog() {
     Pilha *p = new Pilha;
     p->topo = NULL;
+    
     return p;
 }
 

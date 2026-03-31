@@ -19,8 +19,8 @@
             f->inicio = no;
             f->fim = no;
         } else {
-            f->fim->prox = no;
-            f->fim = no;
+            f->fim->prox = no;//proximo do fim nao aponta mais pra nulo aponta para onde no aponta
+            f->fim = no;//f depois aponta para no dizendo que esta no ultimo da fila
         }
 
         cout<<"\n aviao de id: "<< id <<" esta na fila\n";
@@ -32,11 +32,11 @@
             cout << "O hangar esta vazio";
             return;
         }
-            NoFila *noFila = f->inicio;
-            f->inicio = f->inicio->prox;
+            NoFila *noFila = f->inicio;//novo no aponta para inicio da fila
+            f->inicio = f->inicio->prox;//inicio pula para o proximo da fila
 
             cout << "\n o aviao de id " << noFila->id << " esta saindo\n";
-            delete noFila;
+            delete noFila;//apaga o antigo primeiro da fila pelo endereco de memoria apontado por nofila
             
             if (f->inicio == NULL) {
                 f->fim = NULL;
